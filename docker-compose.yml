@@ -1,0 +1,52 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+version: '3.7'
+networks:
+  backend:
+    name: app
+    driver: bridge
+volumes:
+  postgres-data:
+# Define services
+services:
+  # App backend service
+  app:
+    image: donation:latest
+    container_name: kpayApi
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    command: --spring.profiles.active=docker
+    # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    ports:
+      - "9001:9001"
+    networks:
+      - backend
+    # This service depends on postgres. Start that first.
+    depends_on:
+      - db
+    # Service health check
+    healthcheck:
+      test: curl -f http://localhost:9001 || exit 1
+      interval: 1m
+      timeout: 10s
+      retries: 2
+  db:
+    image: postgres:12
+    container_name: postgres-db
+    restart: always
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - backend
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: automobiles
+      PGDATA: /var/lib/postgresql/data/pgdata
+    # Service health check
+    healthcheck:
+      test: pg_isready -U postgres
+      interval: 1m
+      timeout: 10s
+      retries: 2

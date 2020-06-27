@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "70018e9d-c2cd-434b-a01c-da22f053cb5b",
+		"name": "kpay",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "뿌리기",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b9a4c732-cb01-4688-9657-b18f3e891b63",
+						"exec": [
+							"",
+							"pm.environment.set(\"token\", pm.response.json().token);",
+							"",
+							"console.log(pm.response.json().token)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-USER-ID",
+						"type": "text",
+						"value": "1"
+					},
+					{
+						"key": "X-ROOM-ID",
+						"type": "text",
+						"value": "1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"money\" : 10000,\n    \"capacity\" : 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "받기",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-USER-ID",
+						"type": "text",
+						"value": "4"
+					},
+					{
+						"key": "X-ROOM-ID",
+						"type": "text",
+						"value": "1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"money\" : 10000,\n    \"capacity\" : 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/take/:token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"take",
+						":token"
+					],
+					"variable": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "조회하기",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-USER-ID",
+						"type": "text",
+						"value": "1"
+					},
+					{
+						"key": "X-ROOM-ID",
+						"type": "text",
+						"value": "1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"money\" : 10000,\n    \"capacity\" : 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/find/:token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"find",
+						":token"
+					],
+					"variable": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

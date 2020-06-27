@@ -1,0 +1,19 @@
+
+logging.level.io.kpay: DEBUG
+logging.level.org.hibernate.SQL: DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+server.port: 9001
+
+spring:
+    profiles:
+        active: @activatedProperties@
+    application:
+        name: KkPay
+
+# Swagger configuration
+springdoc:
+    swagger-ui:
+        path: /swagger-ui.html # swagger-ui custom path
+    api-docs:
+        path: /v3/api-docs.yaml
