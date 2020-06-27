@@ -27,18 +27,18 @@ Appendix A.
 Go to [http://localhost:9001/api](http://localhost:9001/api) to test and would specify basic authorization a username: `user` and password: `user` or username: `admin` and password: `admin`
 * POST request to `/api/create/` ;
 * PUT request to `/api/take/:token` ;
-* GET request to `/api/find/:token` ;tomobiles".
+* GET request to `/api/find/:token` ;".
 
 or use Swagger API [http://localhost:9001/swagger-ui.html](http://localhost:9001/swagger-ui.html)
 
 and generation API docks [http://localhost:9001/v3/api-docs.yaml](http://localhost:9001/v3/api-docs.yaml)
 
 **3. Docker control commands**
-* Check all the images you have:
+*
 ```bash
 docker images
 ```
-* If you have to want see running containers:
+* running containers:
 ```bash
 docker ps
 ```
