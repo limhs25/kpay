@@ -47,60 +47,6 @@ class FlexMoneyApplicationTests {
                 .andExpect(jsonPath("token").exists())
                 .andReturn();
 
-        String content = result.getResponse().getContentAsString();
-
-//
-//        request = new PaymentRequestVO();
-//        request.setToken(token);
-//
-//
-//        /**
-//         * step 2. 받기 진행
-//         */
-//        httpHeaders.add("X-USER-ID", String.valueOf(2));
-//        mockMvc.perform(put("/payment")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .content(objectMapper.writeValueAsString(request))
-//                .headers(httpHeaders)
-//        )
-//                .andDo(print()).andExpect(status().isOk())
-//                .andExpect(jsonPath("amount").exists());
-//
-//        /**
-//         * step 2-1. 본인 받기 실패
-//         */
-//        httpHeaders.add("X-USER-ID", String.valueOf(1));
-//        mockMvc.perform(put("/payment")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .content(objectMapper.writeValueAsString(request))
-//                .headers(httpHeaders)
-//        )
-//                .andDo(print()).andExpect(status().isOk())
-//                .andExpect(jsonPath("code").exists());
-//
-//        /**
-//         * step 3. 뿌리기 데이터 조회
-//         */
-//        httpHeaders.add("X-USER-ID", String.valueOf(1));
-//        String getUrl = "/payment/".concat(token);
-//        mockMvc.perform(get(getUrl)
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .headers(httpHeaders)
-//        )
-//                .andDo(print()).andExpect(status().isOk())
-//                .andExpect(jsonPath("completedAmount").exists());
-//
-//        /**
-//         * step 4. 뿌리기 다른 사용자로 데이터 조회 실패
-//         */
-//        httpHeaders.add("X-USER-ID", String.valueOf(2));
-//        mockMvc.perform(get(getUrl)
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .headers(httpHeaders)
-//        )
-//                .andDo(print()).andExpect(status().isOk())
-//                .andExpect(jsonPath("code").exists());
-
 
     }
 
